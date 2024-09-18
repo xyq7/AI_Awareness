@@ -31,16 +31,21 @@ cd data
 wget https://www.onetcenter.org/dl_files/database/db_29_0_excel/Occupation%20Data.xlsx
 wget https://www.onetcenter.org/dl_files/database/db_29_0_excel/Task%20Statements.xlsx
 wget https://www.bls.gov/soc/2018/soc_2010_to_2018_crosswalk.xlsx
-wget https://www.onetcenter.org/taxonomy/2019/soc/2019_to_SOC_Crosswalk.xlsx?fmt=xlsx
-
+wget https://www.onetcenter.org/taxonomy/2019/soc/2019_to_SOC_Crosswalk.xlsx
+cd ..
 
 ```
-### AI Familiarity
-```bash
-cd data_code
+### Obtain AI Familiarity
+Since this package requires access to the OpenAI API, you will need to register an account and obtain your OPENAI_API_KEY. Please follow the instructions provided in the OpenAI documentation for registration and obtaining the API keys: OpenAI Documentation. The code has been test with OpenAI Services. Setup the your OpenAI API key
 
+```bash
+export OPENAI_API_KEY='yourkey'
+```
+
+```bash
 # estimate occupation AI Familiarity with GPT4
-python get_familiarity.py
+# put the 
+python data_code/get_familiarity.py
 ```
 The processed familiarity is available at https://github.com/xyq7/AI_Awareness_Data.
 
