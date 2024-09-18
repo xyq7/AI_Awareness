@@ -24,7 +24,17 @@ Our findings reveal that traditionally underrepresented racial/ethnic groups and
 
 
 ## Data Process Procedure
+### Download External Data
 
+```bash
+cd data
+wget https://www.onetcenter.org/dl_files/database/db_29_0_excel/Occupation%20Data.xlsx
+wget https://www.onetcenter.org/dl_files/database/db_29_0_excel/Task%20Statements.xlsx
+wget https://www.bls.gov/soc/2018/soc_2010_to_2018_crosswalk.xlsx
+wget https://www.onetcenter.org/taxonomy/2019/soc/2019_to_SOC_Crosswalk.xlsx?fmt=xlsx
+
+
+```
 ### AI Familiarity
 ```bash
 cd data_code
@@ -46,7 +56,9 @@ The subjective assessment is available at https://github.com/xyq7/AI_Awareness_D
 ```bash
 cd data_code
 
-# obtain task-level occupation
+# obtain task-level occupation task replacement score
+
+
 ```
 The objective assessment is available at https://github.com/xyq7/AI_Awareness_Data.
 
