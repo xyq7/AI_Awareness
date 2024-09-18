@@ -3,6 +3,7 @@
 ## Contents
 - [Overview](#overview)
 - [Repo Contents](#repo-contents)
+- [Installation Guide](#installation-guide)
 - [Data Analysis](#data-analysis)
 - [License](./LICENSE)
 
@@ -22,7 +23,11 @@ Our findings reveal that traditionally underrepresented racial/ethnic groups and
 - [script](./script): scripts for data analysis.
 - [data_code](./data_code): source code to process the data.
 
-
+## Installation Guide
+```
+pip install jsonlines
+pip install openai
+```
 ## Data Process Procedure
 ### Download External Data
 
@@ -44,7 +49,6 @@ export OPENAI_API_KEY='yourkey'
 
 ```bash
 # estimate occupation AI Familiarity with GPT4
-# put the 
 python data_code/get_familiarity.py
 ```
 The processed familiarity is available at https://github.com/xyq7/AI_Awareness_Data.

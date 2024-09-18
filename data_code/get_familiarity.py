@@ -1,7 +1,6 @@
 import openai
 import json
 import os
-os.environ['OPENAI_API_KEY'] = ""  # enter OpenAI Key here
 import jsonlines
 def gen_score(occu, des, model_name):
     client =  openai.OpenAI()
@@ -26,19 +25,18 @@ def find_score(text):
 import pandas as pd
 
 # 载入Excel文件
-file_path = '/home/yueqi/SocAI/Data_Collection_Plan.xlsx'
-df = pd.read_excel(file_path, header=3)
+file_path = './data/Occupation Data.xlsx'
+df = pd.read_excel(file_path, header=0)
 # df = df.drop([0, 1])
 
-# 假设Excel文件中的列名为 "task id" 和 "task"
 model_name = "gpt-4-turbo"
 MAX_RETRY = 10
 out = []
 print(df.columns.tolist())
 for index, row in df.iterrows():
-    o_id = row['O*NET-SOC 2019 Code']
-    occu = row['O*NET-SOC 2019 Title']
-    des = row['O*NET-SOC 2019 Description']
+    o_id = row['O*NET-SOC Code']
+    occu = row['Title']
+    des = row['Description']
     retry_time = 0
     
 
@@ -51,7 +49,7 @@ for index, row in df.iterrows():
             "occu": occu,
             "score": score,
         })
-    with jsonlines.open("./AI_familiarity.json", "w") as writer:
+    with jsonlines.open("./data/AI_familiarity.json", "w") as writer:
         writer.write_all(out)
     # print(f'Task ID: {task_id}, Task: {task}')
     
