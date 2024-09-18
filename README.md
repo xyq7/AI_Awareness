@@ -4,6 +4,7 @@
 - [Overview](#overview)
 - [Repo Contents](#repo-contents)
 - [Installation Guide](#installation-guide)
+- [Data Process Procedure](#data-process-procedure)
 - [Data Analysis](#data-analysis)
 - [License](./LICENSE)
 
@@ -27,11 +28,20 @@ Our findings reveal that traditionally underrepresented racial/ethnic groups and
 ```
 pip install jsonlines
 pip install openai
+pip install openpyxl
+pip install pandas
 ```
-## Data Process Procedure
-### Download External Data
+Since this package requires access to the OpenAI API, you will need to register an account and obtain your OPENAI_API_KEY. Please follow the instructions provided in the OpenAI documentation for registration and obtaining the API keys: OpenAI Documentation. The code has been test with OpenAI Services. Setup the your OpenAI API key:
 
 ```bash
+export OPENAI_API_KEY='yourkey'
+```
+## Data Process Procedure
+The processed data are available at available at https://github.com/xyq7/AI_Awareness_Data. We can directly download and save at ```/data/```.
+Following are the procedure in obtaining AI Familiarity and Objective Assessment.
+### Download External Data
+```bash
+mkdir data
 cd data
 wget https://www.onetcenter.org/dl_files/database/db_29_0_excel/Occupation%20Data.xlsx
 wget https://www.onetcenter.org/dl_files/database/db_29_0_excel/Task%20Statements.xlsx
@@ -41,36 +51,23 @@ cd ..
 
 ```
 ### Obtain AI Familiarity
-Since this package requires access to the OpenAI API, you will need to register an account and obtain your OPENAI_API_KEY. Please follow the instructions provided in the OpenAI documentation for registration and obtaining the API keys: OpenAI Documentation. The code has been test with OpenAI Services. Setup the your OpenAI API key
 
-```bash
-export OPENAI_API_KEY='yourkey'
-```
 
 ```bash
 # estimate occupation AI Familiarity with GPT4
 python data_code/get_familiarity.py
 ```
-The processed familiarity is available at https://github.com/xyq7/AI_Awareness_Data.
-
-
-### Subjective Assessment
-The subjective assessment is available at https://github.com/xyq7/AI_Awareness_Data.
-
-
 
 ### Objective Assessment
 
 
 ```bash
-cd data_code
-
 # obtain task-level occupation task replacement score
+python data_code/get_task_score.py
 
-
+## aggregate to occupations
+python data_code/get_obj_score.py
 ```
-The objective assessment is available at https://github.com/xyq7/AI_Awareness_Data.
-
 
 ## Data Analysis Procedure
 

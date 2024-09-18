@@ -24,10 +24,9 @@ def find_score(text):
 
 import pandas as pd
 
-# 载入Excel文件
 file_path = './data/Occupation Data.xlsx'
 df = pd.read_excel(file_path, header=0)
-# df = df.drop([0, 1])
+
 
 model_name = "gpt-4-turbo"
 MAX_RETRY = 10
@@ -52,5 +51,5 @@ for index, row in df.iterrows():
     with jsonlines.open("./data/AI_familiarity.json", "w") as writer:
         writer.write_all(out)
     # print(f'Task ID: {task_id}, Task: {task}')
-    
+out.to_excel('./AI_familiarity.xlsx', index=False, engine='openpyxl')
     

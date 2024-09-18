@@ -1,7 +1,6 @@
 import openai
 import json
 import os
-os.environ['OPENAI_API_KEY'] = "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"
 import jsonlines
 def gen_score(year, task, model_name):
     client =  openai.OpenAI()
@@ -26,7 +25,7 @@ def find_score(text):
 import pandas as pd
 
 # 载入Excel文件
-file_path = '/home/yueqi/SocAI/TaskStatements.xlsx'
+file_path = 'data/Task Statements.xlsx'
 df = pd.read_excel(file_path)
 years = ["1 year", "5 years", "10 years", "20 years"]
 # 假设Excel文件中的列名为 "task id" 和 "task"
@@ -49,8 +48,7 @@ for index, row in df.iterrows():
                 "year": year,
                 "score": score,
             })
-    with jsonlines.open("./task_score.json", "w") as writer:
+    with jsonlines.open("data/task_score.json", "w") as writer:
         writer.write_all(out)
-    # print(f'Task ID: {task_id}, Task: {task}')
-    
+
     
