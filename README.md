@@ -4,7 +4,7 @@
 - [Overview](#overview)
 - [Repo Contents](#repo-contents)
 - [Installation Guide](#installation-guide)
-- [Data Process Procedure](#data-process-procedure)
+- [Data Process](#data-process)
 - [Data Analysis](#data-analysis)
 - [License](./LICENSE)
 
@@ -20,9 +20,9 @@ Our findings reveal that traditionally underrepresented racial/ethnic groups and
 
 
 ## Repo Contents
-- [src](./src): source code to analyze result data.
-- [script](./script): scripts for data analysis.
+- [code](./code): source code to analyze result data.
 - [data_code](./data_code): source code to process the data.
+- [figure](./figure): Figures involved in README.
 
 ## Installation Guide
 ```
@@ -30,13 +30,15 @@ pip install jsonlines
 pip install openai
 pip install openpyxl
 pip install pandas
+pip install scipy
+pip install matplotlib
 ```
 Since this package requires access to the OpenAI API, you will need to register an account and obtain your OPENAI_API_KEY. Please follow the instructions provided in the OpenAI documentation for registration and obtaining the API keys: OpenAI Documentation. The code has been test with OpenAI Services. Setup the your OpenAI API key:
 
 ```bash
 export OPENAI_API_KEY='yourkey'
 ```
-## Data Process Procedure
+## Data Process
 The processed data are available at available at https://github.com/xyq7/AI_Awareness_Data. We can directly download and save at ```/data/```.
 Following are the procedure in obtaining AI Familiarity and Objective Assessment.
 ### Download External Data
@@ -69,5 +71,16 @@ python data_code/get_task_score.py
 python data_code/get_obj_score.py
 ```
 
-## Data Analysis Procedure
+## Data Analysis 
+
+### Overall Statistics for All Groups
+```bash
+python code/statistics.py
+```
+
+### Figures for Groups
+```bash
+python code/analysis.py
+```
+
 
